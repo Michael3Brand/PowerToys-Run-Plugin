@@ -9,6 +9,6 @@
   "Language": "csharp",
   "Website": "brandmichael.de",
   "ExecuteFileName": "Community.PowerToys.Run.Plugin.PowerToys_Run_Plugin_MB.dll",
-  "IcoPathDark": "Images\\PowerToys_Run_Plugin_MB.dark.png",
-  "IcoPathLight": "Images\\PowerToys_Run_Plugin_MB.light.png"
+  "IcoPathDark": "Images\\MB_logo.png",
+  "IcoPathLight": "Images\\MB_logo.png"
 }

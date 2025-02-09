@@ -141,11 +141,11 @@ namespace Community.PowerToys.Run.Plugin.PowerToys_Run_Plugin_MB
         {
             if (theme == Theme.Light || theme == Theme.HighContrastWhite)
             {
-                _iconPath = "Images/PowerToys Run Plugin MB.light.png";
+                _iconPath = "Images/MB_logo.png";
             }
             else
-            {
-                _iconPath = "Images/PowerToys Run Plugin MB.dark.png";
+            { 
+                _iconPath = "Images/MB_logo.png";
             }
         }
 
