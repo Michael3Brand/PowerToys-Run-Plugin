@@ -1,0 +1,14 @@
+{
+  "ID": "5341e9c16dd94d6ea75a75e840d994d9",
+  "ActionKeyword": "dl",
+  "Disabled": false,
+  "IsGlobal": false,
+  "Name": "PowerToys Run Plugin by Michael Brand (dl)",
+  "Author": "Michael Brand",
+  "Version": "1.0.0",
+  "Language": "csharp",
+  "Website": "brandmichael.de",
+  "ExecuteFileName": "Community.PowerToys.Run.Plugin.PowerToys_Run_Plugin_MB.dll",
+  "IcoPathDark": "Images\\PowerToys_Run_Plugin_MB.dark.png",
+  "IcoPathLight": "Images\\PowerToys_Run_Plugin_MB.light.png"
+}
