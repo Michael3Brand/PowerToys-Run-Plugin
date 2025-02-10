@@ -1,18 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using ManagedCommon;
 using Microsoft.PowerToys.Settings.UI.Library;
-using Wox.Infrastructure;
 using Wox.Plugin;
-using Wox.Plugin.Logger;
 
 namespace Community.PowerToys.Run.Plugin.PowerToys_Run_Plugin_MB
 {
@@ -85,6 +77,17 @@ namespace Community.PowerToys.Run.Plugin.PowerToys_Run_Plugin_MB
             {
                 results.Add(new Result
                 {
+                    Title = $"Save clipboard as '{query.Search}' in 'Downloads' folder and open it",
+                    SubTitle = Description,
+                    QueryTextDisplay = string.Empty,
+                    IcoPath = _iconPath,
+                    Action = action =>
+                    {
+                        return SaveClipboardAsFileAndOpenIt(query.Search);
+                    },
+                });
+                results.Add(new Result
+                {
                     Title = $"Save clipboard as '{query.Search}' in 'Downloads' folder",
                     SubTitle = Description,
                     QueryTextDisplay = string.Empty,
@@ -144,7 +147,7 @@ namespace Community.PowerToys.Run.Plugin.PowerToys_Run_Plugin_MB
                 _iconPath = "Images/MB_logo.png";
             }
             else
-            { 
+            {
                 _iconPath = "Images/MB_logo.png";
             }
         }
@@ -185,14 +188,33 @@ namespace Community.PowerToys.Run.Plugin.PowerToys_Run_Plugin_MB
 
         private static bool SaveClipboardAsFile(string? value)
         {
-            var filename = value ?? "PowerToys Run Plugin by Michael Brand.txt";
-
             var clipboardContent = Clipboard.GetText();
-            if (clipboardContent == null) return true;
+            if (clipboardContent == null) return false;
 
-            var path = KnownFolders.GetPath(KnownFolder.Downloads);
-            File.WriteAllText(Path.Combine(path, filename), clipboardContent);
+            File.WriteAllText(GetFilePath(value), clipboardContent);
             return true;
+        }
+
+        private static bool SaveClipboardAsFileAndOpenIt(string? value)
+        {
+            if (SaveClipboardAsFile(value))
+            {
+                using Process fileopener = new Process();
+
+                fileopener.StartInfo.FileName = "explorer";
+                fileopener.StartInfo.Arguments = GetFilePath(value);
+                fileopener.Start();
+            }
+
+            return true;
+        }
+
+        private static string GetFilePath(string? value)
+        {
+            var filename = value ?? "PowerToys Run Plugin by Michael Brand.txt";
+            var path = KnownFolders.GetPath(KnownFolder.Downloads);
+
+            return Path.Combine(path, filename);
         }
 
         private bool OpenSaveFolder()

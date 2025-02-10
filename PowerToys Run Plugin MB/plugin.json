@@ -5,7 +5,7 @@
   "IsGlobal": false,
   "Name": "PowerToys Run Plugin by Michael Brand (dl)",
   "Author": "Michael Brand",
-  "Version": "1.0.0",
+  "Version": "1.0.2",
   "Language": "csharp",
   "Website": "brandmichael.de",
   "ExecuteFileName": "Community.PowerToys.Run.Plugin.PowerToys_Run_Plugin_MB.dll",
